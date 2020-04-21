@@ -18,12 +18,10 @@ class AppContainer extends Component {
                 <Router>
                 <Link to='/' className='homeLink'>Home</Link> 
                 <h1>Contacts</h1>
-                
                 <button onClick={this.addNewContact}>Add New Contact</button>
                 <br/>
-                
                 <Route exact path='/' component={ListContacts}/>
-                <Route exact path='/:item_name' component={ViewContact}/>
+                <Route exact path='/:contact_name' component={ViewContact}/>
                 </Router>
             </div>
         );

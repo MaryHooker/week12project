@@ -15,25 +15,25 @@ router.post('/',(req,res)=>{
 })
 
 //Read a specific contact
-router.get('/:name',(req,res)=>{
+router.get('/:contact_name',(req,res)=>{
     // res.send(`Get specific contact by name`)
-    ContactCollection.findOne({contactName:req.params.name},(errors,results)=>{
+    ContactCollection.findOne({contactName:req.params.contact_name},(errors,results)=>{
         errors ? res.send(errors) : res.send(results);
     })
 })
 
 //Update a contact by name
-router.put('/:name',(req,res)=>{
+router.put('/:contact_name',(req,res)=>{
     // res.send(`Update contact by name`)
-    ContactCollection.findOneAndUpdate({contactName:req.params.name}, req.body, (errors,results)=>{
+    ContactCollection.findOneAndUpdate({contactName:req.params.contact_name}, req.body, (errors,results)=>{
         errors ? res.send(errors) : res.send(results);
     })
 })
 
 //Delete a contact by name
-router.delete('/:name',(req,res)=>{
+router.delete('/:contact_name',(req,res)=>{
     // res.send(`Deleted contact by name`)
-    ContactCollection.findOneAndDelete({contactName:req.params.name}, (errors,results)=>{
+    ContactCollection.findOneAndDelete({contactName:req.params.contact_name}, (errors,results)=>{
         errors ? res.send(errors) : res.send(results);
     })
 })

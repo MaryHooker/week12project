@@ -5,7 +5,7 @@ class AddContact extends Component {
         super(props);
         this.state = { 
             contactName: '',
-            contactNuber: 0,
+            contactNumber: 0,
             contactEmail: '',
             contactDetails: '',
          }

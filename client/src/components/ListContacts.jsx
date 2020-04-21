@@ -1,14 +1,16 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
+import {BrowserRouter as Router,Link,Route} from 'react-router-dom';
+
 
 class ListContacts extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            contactArray:[],
-         }
+        this.state = {
+            contactArray: [],
+        }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.loadData();
     }
 
@@ -24,24 +26,27 @@ class ListContacts extends Component {
         this.setState({ contactArray: json })
     }
 
-    render() { 
-        return ( 
+    render() {
+        return (
             <div>
-                    {
-                this.state.contactArray.map((contact) => {
-                    return (
-                        <div key={contact._id} className='display'>
-                            <p><span>Name:</span> {contact.contactName}</p>
-                            <p><span>Email:</span> {contact.contactEmail}</p>
-                            <button onClick={this.showDetails} className='detailButton'>Details</button>
-                            <hr/>
-                        </div>
-                    )
-                })
-            }
+                {
+                    this.state.contactArray.map((contact) => {
+                        return (
+                            <div key={contact._id} className='display'>
+                                <p><span>Name:</span> 
+                                <Link to={`/${contact.contactName}`}>
+                                    {contact.contactName}
+                                </Link>
+                                </p>
+                                <p><span>Email:</span> {contact.contactEmail}</p>
+                                <hr />
+                            </div>
+                        )
+                    })
+                }
             </div>
-         );
+        );
     }
 }
- 
+
 export default ListContacts;
