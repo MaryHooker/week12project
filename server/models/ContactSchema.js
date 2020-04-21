@@ -8,6 +8,7 @@ let ContactSchema = new Schema(
         "contactName":String,
         "contactNumber":Number,
         "contactEmail":String,
+        "contactDetails":String
     }
 )
 

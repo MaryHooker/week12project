@@ -1,16 +1,17 @@
 body{
-  background-color: goldenrod;
-  color: rgb(43, 43, 134);
+
+  color: rgb(166, 15, 172);
   text-align: center;
   font-family: serif;
-  font-size: 23px;
+  font-size: 26px;
+  background-image: url('/pinkClouds3.jpeg');
 }
 
 button{
   height: 34px;
-  background-color: rgb(43, 43, 134);
-  color: goldenrod;
-  border: 1px solid rgb(43, 43, 134);
+  background-color: rgb(166, 15, 172);
+  color: rgb(245, 194, 241);
+  border: 1px solid rgb(166, 15, 172);
   border-radius: 3%;
   margin: 1%;
   font-weight: bold;
@@ -21,20 +22,42 @@ button{
 }
 
 button:hover{
-  background-color: rgb(10, 90, 10);
-  color: goldenrod;
-  border: 1px solid rgb(10, 90, 10);
+  background-color: rgb(245, 194, 241);
+  color: rgb(166, 15, 172);
+  border: 1px solid rgb(166, 15, 172);
+}
+
+.detailButton{
+  background-color: rgb(245, 194, 241);
+  color: rgb(166, 15, 172);
+  border: 1px solid rgb(166, 15, 172);
+  font-size: 17px;
+}
+
+.detailButton:hover{
+
+  background-color:rgb(166, 15, 172);
+  color: rgb(245, 194, 241);
+  border: 1px solid rgb(166, 15, 172);
 }
 
 input{
-  background-color: goldenrod;
-  border: 2px solid rgb(43, 43, 134);
+  background-color: rgb(245, 194, 241);
+  color: rgb(166, 15, 172);
+  border: 1px solid rgb(166, 15, 172);
   border-radius: 4%;
   height: 28px;
 }
 
+textarea{
+  background-color: rgb(245, 194, 241);
+  color: rgb(166, 15, 172);
+  border: 1px solid rgb(166, 15, 172);
+  border-radius: 4%;
+}
+
 hr{
-  border: 1px solid rgb(43, 43, 134);
+  border: 1px solid rgb(166, 15, 172);
 }
 
 span{
@@ -43,4 +66,20 @@ span{
 
 .display{
   font-size: 18px;
+}
+
+.detailsDisplay{
+  font-size: 18px;
+  text-align: center;
+}
+
+.homeLink{
+  color: rgb(150, 28, 161);
+  font-size: 27px;
+  margin-right: 90%;
+ 
+}
+
+.homeLink:hover{
+  color: rgb(102, 104, 243);
 }
