@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router,Link,Route} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 class ListContacts extends Component {
@@ -24,6 +24,7 @@ class ListContacts extends Component {
         console.table(json);
         //place imported json in array
         this.setState({ contactArray: json })
+      
     }
 
     render() {

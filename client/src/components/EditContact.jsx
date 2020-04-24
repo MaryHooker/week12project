@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 // import AppContainer from './AppContainer';
 
-class AddContact extends Component {
+class EditContact extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,8 +38,8 @@ class AddContact extends Component {
             contactDetails: this.state.contactDetails
         }
         console.log(JSON.stringify(formData))
-        let response = await fetch('/api', {
-            method: "POST",
+        let response = await fetch(`/api/edit/${this.props.match.params.contactName}`, {
+            method: "PUT",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -48,17 +48,7 @@ class AddContact extends Component {
         })
         let json = await response.json();
         //sanity
-        console.log(json);
-
-        //clear form
-        this.setState(
-            {
-                contactName: '',
-                contactNumber: 0,
-                contactEmail: '',
-                contactDetails: '',
-            }
-        )
+        console.log(`Edit Comp${json}`);
 
         //Redirect
         window.location = '/';
@@ -67,24 +57,23 @@ class AddContact extends Component {
     render() {
         return (
             <div>
-              
-                <h2>New Contact</h2>
-                <br />
+        
+                <h2>Edit {this.props.contactName}</h2>
                 <label htmlFor="name">Name:</label>
                 <br />
-                <input type="text" name='name' id='name' value={this.state.contactName} onChange={this.handleInputs} />
+                <input type="text" name='name' id='name' value={this.state.contactName} onChange={this.handleInputs} placeholder={this.props.contactName}/>
                 <br />
                 <label htmlFor="number">Phone Number:</label>
                 <br />
-                <input type="number" name='number' id='number' value={this.state.contactNumber} onChange={this.handleInputs} />
+                <input type="number" name='number' id='number' value={this.state.contactNumber} onChange={this.handleInputs} placeholder={this.props.contactNumber}/>
                 <br />
                 <label htmlFor="email">Email:</label>
                 <br />
-                <input type="email" name='email' id='email' value={this.state.contactEmail} onChange={this.handleInputs} />
+                <input type="email" name='email' id='email' value={this.state.contactEmail} onChange={this.handleInputs} placeholder={this.props.contactEmail}/>
                 <br />
                 <label htmlFor="details">Details:</label>
                 <br />
-                <textarea name="details" id="details" cols="30" rows="4" value={this.state.contactDetails} onChange={this.handleInputs} ></textarea>
+                <textarea name="details" id="details" cols="30" rows="4" value={this.state.contactDetails} onChange={this.handleInputs} placeholder={this.props.contactDetails}></textarea>
                 <br />
                 <button onClick={this.handleSubmission}>Submit</button>
             </div>
@@ -92,4 +81,4 @@ class AddContact extends Component {
     }
 }
 
-export default AddContact;
+export default EditContact;

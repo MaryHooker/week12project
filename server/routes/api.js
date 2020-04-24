@@ -15,25 +15,25 @@ router.post('/',(req,res)=>{
 })
 
 //Read a specific contact
-router.get('/:contact_name',(req,res)=>{
+router.get('/:contactName',(req,res)=>{
     // res.send(`Get specific contact by name`)
-    ContactCollection.findOne({contactName:req.params.contact_name},(errors,results)=>{
+    ContactCollection.findOne({contactName:req.params.contactName},(errors,results)=>{
         errors ? res.send(errors) : res.send(results);
     })
 })
 
 //Update a contact by name
-router.put('/:contact_name',(req,res)=>{
+router.put('/edit/:contactName',(req,res)=>{
     // res.send(`Update contact by name`)
-    ContactCollection.findOneAndUpdate({contactName:req.params.contact_name}, req.body, (errors,results)=>{
+    ContactCollection.findOneAndUpdate({contactName:req.params.contactName}, req.body, (errors,results)=>{
         errors ? res.send(errors) : res.send(results);
     })
 })
 
 //Delete a contact by name
-router.delete('/:contact_name',(req,res)=>{
+router.delete('/:contactName',(req,res)=>{
     // res.send(`Deleted contact by name`)
-    ContactCollection.findOneAndDelete({contactName:req.params.contact_name}, (errors,results)=>{
+    ContactCollection.findOneAndDelete({contactName:req.params.contactName}, (errors,results)=>{
         errors ? res.send(errors) : res.send(results);
     })
 })
