@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-// import AppContainer from './AppContainer';
 
 class EditContact extends Component {
     constructor(props) {
@@ -54,6 +52,7 @@ class EditContact extends Component {
         window.location = '/';
 
     }
+    
     render() {
         return (
             <div>
