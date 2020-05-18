@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-// import AppContainer from './AppContainer';
 
 class AddContact extends Component {
     constructor(props) {
@@ -38,7 +36,7 @@ class AddContact extends Component {
             contactDetails: this.state.contactDetails
         }
         console.log(JSON.stringify(formData))
-        let response = await fetch('/api', {
+        let response = await fetch('/api/add', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import {Button} from 'react-bootstrap';
 import ViewContact from './ViewContact';
 import ListContacts from './ListContacts';
 import AddContact from './AddContact';
@@ -10,45 +9,23 @@ class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            contactForm: false,
-        }
-    }
 
-    addNewContact = (event) => {
-        this.setState(
-            {
-                contactForm: true
-            }
-        )
+        }
     }
 
     render() {
-        let displayForm =
-            <Router>
-                <Link to='/'>Home</Link>
-                <h1>Contacts</h1>
-                <Button onClick={this.addNewContact}>Add New Contact</Button>
-                <br />
-                <Route exact path='/' component={ListContacts} />
-                <Route path='/:contactName' component={ViewContact} />
-                <Route exact path={`/edit/:contactName`} component={EditContact}></Route>
-            </Router>
 
-        if (this.state.contactForm) {
-            displayForm =
-                <div>
-                    <Router>
-                        <Link to='/'>Home</Link>
-                    </Router>
-                    <AddContact />
-                </div>
-        }
         return (
             <div>
+                <Router>
+                    <Link to='/'>Home</Link>
+                    <h1>Contacts</h1>
+                    <Route path='/' exact component={() => <ListContacts/>} />
+                    <Route path='/add' exact component={() => <AddContact/>} />
+                    <Route path='/view/:contactName' exact component={(props) => <ViewContact {...props}/>} />
+                    <Route path='/edit/:contactName' exact component={(props) => <EditContact {...props}/>} />
+                </Router>
 
-                <div>
-                    {displayForm}
-                </div>
             </div>
         );
     }

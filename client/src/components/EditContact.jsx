@@ -24,7 +24,7 @@ class EditContact extends Component {
     }
 
 
-    //When Submit button is pressed in Add Contact form
+    //When Submit button is pressed in Edit Contact
     handleSubmission = async (event) => {
         event.preventDefault();
 
@@ -56,23 +56,21 @@ class EditContact extends Component {
     render() {
         return (
             <div>
-        
-                <h2>Edit {this.props.contactName}</h2>
                 <label htmlFor="name">Name:</label>
                 <br />
-                <input type="text" name='name' id='name' value={this.state.contactName} onChange={this.handleInputs} placeholder={this.props.contactName}/>
+                <input type="text" name='name' id='name' value={this.state.contactName} onChange={this.handleInputs}/>
                 <br />
                 <label htmlFor="number">Phone Number:</label>
                 <br />
-                <input type="number" name='number' id='number' value={this.state.contactNumber} onChange={this.handleInputs} placeholder={this.props.contactNumber}/>
+                <input type="number" name='number' id='number' value={this.state.contactNumber} onChange={this.handleInputs}/>
                 <br />
                 <label htmlFor="email">Email:</label>
                 <br />
-                <input type="email" name='email' id='email' value={this.state.contactEmail} onChange={this.handleInputs} placeholder={this.props.contactEmail}/>
+                <input type="email" name='email' id='email' value={this.state.contactEmail} onChange={this.handleInputs}/>
                 <br />
                 <label htmlFor="details">Details:</label>
                 <br />
-                <textarea name="details" id="details" cols="30" rows="4" value={this.state.contactDetails} onChange={this.handleInputs} placeholder={this.props.contactDetails}></textarea>
+                <textarea name="details" id="details" cols="30" rows="4" value={this.state.contactDetails} onChange={this.handleInputs}></textarea>
                 <br />
                 <button onClick={this.handleSubmission}>Submit</button>
             </div>

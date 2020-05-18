@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import {Button} from 'react-bootstrap';
 
 
 class ListContacts extends Component {
@@ -30,12 +31,15 @@ class ListContacts extends Component {
     render() {
         return (
             <div>
+                <div>
+                <Link to='/add'><Button>Add New Contact</Button></Link>
+                </div>
                 {
                     this.state.contactArray.map((contact) => {
                         return (
                             <div key={contact._id} className='display'>
                                 <p><span>Name:</span> 
-                                <Link to={`/${contact.contactName}`}>
+                                <Link to={`/view/${contact.contactName}`}>
                                     {contact.contactName}
                                 </Link>
                                 </p>

@@ -7,7 +7,7 @@ router.use(express.json());
 let ContactCollection = require('../models/ContactSchema');
 
 //Create a new contact
-router.post('/',(req,res)=>{
+router.post('/add',(req,res)=>{
     // res.send(`Create new contact`)
     ContactCollection.create(req.body,(errors,results)=>{
         errors ? res.send(errors) : res.send(results);
@@ -15,7 +15,7 @@ router.post('/',(req,res)=>{
 })
 
 //Read a specific contact
-router.get('/:contactName',(req,res)=>{
+router.get('/view/:contactName',(req,res)=>{
     // res.send(`Get specific contact by name`)
     ContactCollection.findOne({contactName:req.params.contactName},(errors,results)=>{
         errors ? res.send(errors) : res.send(results);
@@ -31,7 +31,7 @@ router.put('/edit/:contactName',(req,res)=>{
 })
 
 //Delete a contact by name
-router.delete('/:contactName',(req,res)=>{
+router.delete('/delete/:contactName',(req,res)=>{
     // res.send(`Deleted contact by name`)
     ContactCollection.findOneAndDelete({contactName:req.params.contactName}, (errors,results)=>{
         errors ? res.send(errors) : res.send(results);
