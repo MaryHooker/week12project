@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class ViewContact extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            contact: {
-                contactName: '',
-                contactNumber: 0,
-                contactEmail: '',
-                contactDetails: '',
-            },
+
+            contactName: '',
+            contactNumber: 0,
+            contactEmail: '',
+            contactDetails: '',
+
         }
     }
 
@@ -22,43 +22,62 @@ class ViewContact extends Component {
     //This method will fetch a specific contact
     loadData = async () => {
         //fetch documents from database
-        let response = await fetch(`api/view/${this.props.match.params.contactName}`);
-      
+        let response = await fetch(`/api/view/${this.props.match.params.contactName}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
         let json = await response.json();
-        //sanity
-        console.table(`Viewing Contact ${JSON.stringify(json)}`);
+
         //place imported json in array
-        this.setState({ contact: json })//should be one item
+        this.setState({
+            contactName: json.contactName,
+            contactNumber: json.contactNumber,
+            contactEmail: json.contactEmail,
+            contactDetails: json.contactDetails
+        })
+        //sanity
+        console.table(`Viewing Contact ${JSON.stringify(this.state)}`);
 
     }
 
-    // deleteContact = () => {
+    deleteContact = async() => {
 
-    //     //Send your delete request through fetch/specify method
-    //     fetch(`/api/${this.state.contact.contactName}`,
-    //         {
-    //             method: 'DELETE'
-    //         });
-    //     console.log(`Deleted it!`);
-    //     //redirect to root site
-    //     window.location = '/'
+        //Send your delete request through fetch/specify method
+       let response = await fetch(`/api/delete/${this.props.match.params.contactName}`,
+            {
+                method: 'DELETE',
+                headers:{
+                    'Accept':'application/json',
+                    'Content-Type':'application/json'
+                }
+            });
 
-    // }
+        let json = await response.json();
+        //sanity
+        console.log(`Deleting ${JSON.stringify(json)}`)
+        //redirect to root site
+        window.location = '/'
+
+    }
 
     render() {
-                
-        return (
-          <div>
-                  <div className='detailsDisplay'>
-                <p><span>Name:</span> {this.state.contact.contactName}</p>
-                <p><span>Email:</span> {this.state.contact.contactEmail}</p>
-                <p><span>Number:</span> {this.state.contact.contactNumber}</p>
-                <p><span>Details:</span> {this.state.contact.contactDetails}</p>
-                <Link to={`/edit/${this.state.contact.contactName}`}><button className='detailButton'>Edit</button></Link>
-                {/* <button onClick={this.deleteContact} className='detailButton'>Delete</button> */}
-            </div>
 
-          </div>
+        return (
+            <div>
+                <div className='detailsDisplay'>
+                    <p><span>Name:</span> {this.state.contactName}</p>
+                    <p><span>Email:</span> {this.state.contactEmail}</p>
+                    <p><span>Number:</span> {this.state.contactNumber}</p>
+                    <p><span>Details:</span> {this.state.contactDetails}</p>
+                    <Link to={`/edit/${this.state.contactName}`}><button className='detailButton'>Edit</button></Link>
+                    <button onClick={this.deleteContact} className='detailButton'>Delete</button>
+                </div>
+
+            </div>
         )
     }
 }

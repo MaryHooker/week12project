@@ -38,11 +38,11 @@ class ListContacts extends Component {
                     this.state.contactArray.map((contact) => {
                         return (
                             <div key={contact._id} className='display'>
-                                <p><span>Name:</span> 
+                                
                                 <Link to={`/view/${contact.contactName}`}>
-                                    {contact.contactName}
+                                <p><span>Name:</span> {contact.contactName}</p>
                                 </Link>
-                                </p>
+                                
                                 <p><span>Email:</span> {contact.contactEmail}</p>
                                 <hr />
                             </div>

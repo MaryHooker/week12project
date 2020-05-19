@@ -11,6 +11,36 @@ class EditContact extends Component {
         }
     }
 
+    //When component mounts fetch contact details to show what is being edited
+    componentDidMount() {
+        this.loadData();
+    }
+
+    //This method will fetch a specific contact
+    loadData = async () => {
+        //fetch documents from database
+        let response = await fetch(`/api/view/${this.props.match.params.contactName}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
+        let json = await response.json();
+
+        //place imported json in array
+        this.setState({
+            contactName: json.contactName,
+            contactNumber: json.contactNumber,
+            contactEmail: json.contactEmail,
+            contactDetails: json.contactDetails
+        })
+        //sanity
+        console.table(`Viewing Contact ${JSON.stringify(this.state)}`);
+
+    }
+
     handleInputs = (event) => {
         if (event.target.name === 'name') {
             this.setState({ contactName: event.target.value })
@@ -35,6 +65,7 @@ class EditContact extends Component {
             contactEmail: this.state.contactEmail,
             contactDetails: this.state.contactDetails
         }
+
         console.log(JSON.stringify(formData))
         let response = await fetch(`/api/edit/${this.props.match.params.contactName}`, {
             method: "PUT",
@@ -44,9 +75,10 @@ class EditContact extends Component {
             },
             body: JSON.stringify(formData)
         })
+
         let json = await response.json();
         //sanity
-        console.log(`Edit Comp${json}`);
+        console.log(`Edit Comp ${json}`);
 
         //Redirect
         window.location = '/';
