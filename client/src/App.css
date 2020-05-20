@@ -16,7 +16,7 @@ button{
   margin: 1%;
   font-weight: bold;
   font-family:serif;
-  font-size: 20px;
+  font-size: 17pxpx;
   padding-left: 8px;
   padding-right: 8px;
 }
@@ -28,18 +28,15 @@ button:hover{
 }
 
 .detailButton{
-  background-color: rgb(245, 194, 241);
-  color: rgb(166, 15, 172);
-  border: 1px solid rgb(166, 15, 172);
+  color: rgb(243, 181, 222);
   font-size: 17px;
 }
 
-.detailButton:hover{
+/* .detailButton:hover{
 
-  background-color:rgb(166, 15, 172);
   color: rgb(245, 194, 241);
-  border: 1px solid rgb(166, 15, 172);
-}
+
+} */
 
 input{
   background-color: rgb(245, 194, 241);
@@ -50,7 +47,6 @@ input{
 }
 
 textarea{
-  background-color: rgb(245, 194, 241);
   color: rgb(166, 15, 172);
   border: 1px solid rgb(166, 15, 172);
   border-radius: 4%;
@@ -82,4 +78,11 @@ span{
 
 .homeLink:hover{
   color: rgb(102, 104, 243);
+}
+
+.contactDisplay{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  margin: 3%;
+
 }

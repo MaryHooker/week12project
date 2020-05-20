@@ -69,12 +69,15 @@ class ViewContact extends Component {
         return (
             <div>
                 <div className='detailsDisplay'>
+                    <br/>
+                    <h4><span>Details</span></h4>
+                    <br/>
                     <p><span>Name:</span> {this.state.contactName}</p>
                     <p><span>Email:</span> {this.state.contactEmail}</p>
                     <p><span>Number:</span> {this.state.contactNumber}</p>
                     <p><span>Details:</span> {this.state.contactDetails}</p>
-                    <Link to={`/edit/${this.state.contactName}`}><button className='detailButton'>Edit</button></Link>
-                    <button onClick={this.deleteContact} className='detailButton'>Delete</button>
+                    <Link to={`/edit/${this.state.contactName}`}><button >Edit</button></Link>
+                    <button onClick={this.deleteContact} >Delete</button>
                 </div>
 
             </div>
